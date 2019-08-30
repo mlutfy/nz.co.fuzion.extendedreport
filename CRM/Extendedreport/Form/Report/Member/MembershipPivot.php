@@ -9,15 +9,11 @@ class CRM_Extendedreport_Form_Report_Member_MembershipPivot extends CRM_Extended
 
   protected $_customGroupAggregates = TRUE;
 
-  protected $_aggregatesIncludeNULL = TRUE;
-
-  protected $_aggregatesAddTotal = TRUE;
-
   protected $_rollup = 'WITH ROLLUP';
 
   protected $isPivot = TRUE;
 
-  public $_drilldownReport = ['membership/membershipdetail' => 'Link to Participants'];
+  public $_drilldownReport = ['membership/membershipdetail' => 'Link to memberships'];
 
   protected $_noFields = TRUE;
 
@@ -31,6 +27,10 @@ class CRM_Extendedreport_Form_Report_Member_MembershipPivot extends CRM_Extended
           'order_by' => FALSE,
         ]
       ) + $this->getColumns('contact', [
+          'fields' => FALSE,
+          'order_by' => FALSE,
+        ]
+      ) + $this->getColumns('address', [
           'fields' => FALSE,
           'order_by' => FALSE,
         ]
